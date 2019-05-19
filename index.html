@@ -23,7 +23,7 @@
     <img id='img' src="kogan.jpg" alt="Kogan">
     <button id="start">НАчать
     </button>
-    <!-- <script>
+    <script>
     var btn = document.querySelector('#start');
     btn.addEventListener('click',function(){
         var img;  
@@ -36,10 +36,10 @@
             ctx = canvas.getContext('2d');
             img = document.querySelector('#img');   
             ctx.drawImage(img,0,0);
-            // imgData = ctx.getImageData(0,0,img.width,img.height);//содержит группу пикселей
-            // pixel = imgData.data//содержит все пиксели
-            // len = pixel.length;
-            // invers();
+            imgData = ctx.getImageData(0,0,img.width,img.height);//содержит группу пикселей
+            pixel = imgData.data//содержит все пиксели
+            len = pixel.length;
+            invers();
         }
         function invers(){
             for(i=0;i<len;i+3){
@@ -50,6 +50,6 @@
             }
            
     })
-    </script> -->
+    </script>
 </body>
 </html>
