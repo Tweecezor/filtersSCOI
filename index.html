@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,33 +14,42 @@
         border: 5px solid red;
     }
     </style>
+    
 </head>
-<body onload="init()">
+
+<body>
     <canvas id="canvas" width="180" heigth="180"></canvas>
     <br>
     <img id='img' src="kogan.jpg" alt="Kogan">
-</body>
-<script>
-    var img;
-    var canvas,w=180,h=180,ctx;
-    var imgData;
-    var pixel;//содержит массив пикселей
-    var len;
-    function init(){
-        canvas = document.querySelector('#canvas');
-        ctx = canvas.getContext('2d');
-        img = document.querySelector('#img');   
-        ctx.drawImage(img,0,0);
-        imgData = ctx.getImageData(0,0,img.width,img.height);//содержит группу пикселей
-        pixel = imgData.data//содержит все пиксели
-        len = pixel.length;
-        invers();
-    }
-    function invers(){
-        for(i=0;i<len;i+3){
-            pixel[i] = 255 - pixel[i]//красный канал
+    <button id="start">НАчать
+    </button>
+    <script>
+    var btn = document.querySelector('#start');
+    btn.addEventListener('click',function(){
+        var img;  
+        var canvas,w=180,h=180,ctx;
+        var imgData;
+        var pixel;//содержит массив пикселей
+        var len;
+        function init(){
+            canvas = document.querySelector('#canvas');
+            ctx = canvas.getContext('2d');
+            img = document.querySelector('#img');   
+            ctx.drawImage(img,0,0);
+            imgData = ctx.getImageData(0,0,img.width,img.height);//содержит группу пикселей
+            pixel = imgData.data//содержит все пиксели
+            len = pixel.length;
+            invers();
         }
-        ctx.putImageData(imgData,0,0);
-    }
-</script>
+        function invers(){
+            for(i=0;i<len;i+3){
+                pixel[i] = 255 - pixel[i]//красный канал
+                alert('work');
+            }
+            ctx.putImageData(imgData,0,0);
+            }
+           
+    })
+    </script>
+</body>
 </html>
